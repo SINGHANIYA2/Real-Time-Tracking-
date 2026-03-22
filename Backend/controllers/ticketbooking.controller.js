@@ -16,15 +16,25 @@ exports.createBooking = async (req, res) => {
         const totalamount = bookingData.totalamount;
         const userId = bookingData.userId;
 
-        if (!passengerName) return res.status(400).json({ error: 'Enter passenger name' });
-        if (!email) return res.status(400).json({ error: 'Enter email' });
-        if (!phone) return res.status(400).json({ error: 'Enter phone number' });
-        if (!pickupLocation) return res.status(400).json({ error: 'Enter pickup Location' });
-        if (!dropoffLocation) return res.status(400).json({ error: 'Enter dropoff Location' });
-        if (!travelDate) return res.status(400).json({ error: 'Enter travel date' });
-        if (!departureTime) return res.status(400).json({ error: 'Enter departure time' });
-        if (!ticketPrice) return res.status(400).json({ error: 'Enter ticket price' });
-        if (!totalamount) return res.status(400).json({ error: 'Enter total amount' });
+        const fields = [
+                { value: email, message: "Enter email" },
+                { value: phone, message: "Enter phone number" },
+                { value: pickupLocation, message: "Enter pickup Location" },
+                { value: dropoffLocation, message: "Enter dropoff Location" },
+                { value: travelDate, message: "Enter travel date" },
+                { value: departureTime, message: "Enter departure time" },
+                { value: ticketPrice, message: "Enter ticket price" },
+                { value: totalamount, message: "Enter total amount" },
+            ];
+
+        for (let field of fields) {
+            if (!field.value) {
+                return res.status(400).json({
+                    success: false,
+                    error: field.message,
+                });
+            }
+        }
 
         const coupons = {
             'FIRST20': 20,
