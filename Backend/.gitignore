@@ -1,3 +1,54 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Environment variables (VERY IMPORTANT 🚨)
 .env
-dist
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime files
+pids/
+*.pid
+*.pid.lock
+
+# Build output
+dist/
+build/
+
+# Cache
+.cache/
+.tmp/
+
+# Coverage (testing)
+coverage/
+
+# Optional npm cache
+.npm
+
+# IDE / Editor folders
+.vscode/
+.idea/
+
+# TypeScript (if used)
+*.tsbuildinfo
+
+# Local config files
+config/local.json
+
+# Database files (if using local DB)
+*.sqlite
+*.db
+
+# Uploaded files (if your backend handles uploads)
+uploads/
