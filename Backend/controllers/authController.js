@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../models/user.models");
 const jwt = require("jsonwebtoken");
-const { options } = require("../routes/user");
 require("dotenv").config();
 const saltRound = 10;
 
@@ -20,9 +19,9 @@ exports.signUp = async (req, res) => {
         }
 
         // secure password
-        let hasdhedPassword;
+        let hashedPassword;
         try{
-            hasdhedPassword = await bcrypt.hash(password,saltRound);
+            hashedPassword = await bcrypt.hash(password,saltRound);
         }catch(error){
             return res.status(500).json({
                 success:false,
